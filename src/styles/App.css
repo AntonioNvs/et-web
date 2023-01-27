@@ -1,0 +1,23 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
+
+body {
+  scroll-behavior: smooth;
+  background: linear-gradient(135.37deg, #121212 46.61%, #010011 90.18%);
+  font-family: 'Inter', 'Arial';
+  margin: 0;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+a, a:hover, a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+}
