@@ -8,7 +8,7 @@ import { AddVocabularyContainer, BackgroundContainer, ImageContainer, ImagesCont
 
 export default function AddVocabulary() {
   const [word, setWord] = useState('')
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState<any[]>([])
   const [imagesURLs, setImagesURLs] = useState<string[]>()
 
   const [firstSentence, setFirstSentence] = useState('')
@@ -16,7 +16,7 @@ export default function AddVocabulary() {
   const [secondSentence, setSecondSentence] = useState('')
 
   useEffect(() => {
-    if(images.length < 1 && images.length > 3) return;
+    if(images.length < 1 && images.length > 3) return;  
 
     const newImagesURLs: string[] = []
     images.forEach(image => newImagesURLs.push(URL.createObjectURL(image)))
@@ -24,7 +24,8 @@ export default function AddVocabulary() {
   }, [images])
 
   function handleFileSelecteds(e: React.ChangeEvent<HTMLInputElement>) {
-    setImages([...e.target.files])
+    const files = Array.prototype.slice.call(e.target.files)
+    setImages(files)
   }
 
   function handleSend(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -33,7 +34,7 @@ export default function AddVocabulary() {
       sentences: [firstSentence, secondSentence, thirdSentence], 
       images: images
     }).then((response) => {
-      const data: ResponseDTO = response
+      const data: ResponseDTO = response.data
       alert(`${data.code}: ${data.message}`)
 
     })

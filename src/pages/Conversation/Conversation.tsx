@@ -39,7 +39,7 @@ export default function Conversation() {
 
   const chatInputRef = useRef<HTMLInputElement>(null)
 
-  const socket = useContext(SocketContext);
+  // const socket = useContext(SocketContext);
 
   const {
     transcript,
@@ -48,19 +48,19 @@ export default function Conversation() {
 
   useEffect(() => {
     // Setting the array of messages
-    socket.on("conversation/received_data", (data) => {
-      const messagesRow: MessageDTO[] = []
-      data.data.messages.map((mess: MessageDTO) => {
-        messagesRow.push({
-          text: mess.text,
-          who: mess.who,
-          time: new Date(mess.time)
-        })
-      })
-      setMessages(messagesRow.reverse())
-    })
+    // socket.on("conversation/received_data", (data) => {
+    //   const messagesRow: MessageDTO[] = []
+    //   data.data.messages.map((mess: MessageDTO) => {
+    //     messagesRow.push({
+    //       text: mess.text,
+    //       who: mess.who,
+    //       time: new Date(mess.time)
+    //     })
+    //   })
+    //   setMessages(messagesRow.reverse())
+    // })
 
-    socket.emit("conversation/get_data")
+    // socket.emit("conversation/get_data")
   }, [])
 
   useEffect(() => {
@@ -84,10 +84,10 @@ export default function Conversation() {
     if(textWritten != "") {
       const currentDate = new Date();
       
-      socket.emit("conversation/send_message", {
-        text: textWritten,
-        time: currentDate
-      })
+      // socket.emit("conversation/send_message", {
+      //   text: textWritten,
+      //   time: currentDate
+      // })
 
       setMessages([{
         text: textWritten,
