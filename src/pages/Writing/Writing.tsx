@@ -158,7 +158,7 @@ export default function Writing() {
             isForShowResults && (
               <>
                 <TextInformation size={0.9} weight={400}>Result:</TextInformation>
-                {resultData.data && <TextCorrectResult>{resultData.data.analysis.result}</TextCorrectResult>}
+                {resultData.data && <TextCorrectResult>{resultData.data.analysis.result} - {Math.round(resultData.data.accuracy*100)}%</TextCorrectResult>}
                 <NextInput
                   ref={nextInputRef}
                   placeholder="Type anything to pass.."
